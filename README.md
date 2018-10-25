@@ -1,13 +1,13 @@
 # Notes on "Javascript: Understanding the weird parts"
 
-That document is what I wrote during folowing that amazing course by Anthony P.Alicea. You can find the [course](http://learnwebdev.net/) and the [first 3.5 hours](https://www.youtube.com/watch?v=Bv_5Zv5c-Ts).
+That document is what I wrote during following that amazing course by Anthony P.Alicea. You can find the [course](http://learnwebdev.net/) and the [first 3.5 hours](https://www.youtube.com/watch?v=Bv_5Zv5c-Ts).
 This course is kinda old and isn't using ES6 stuffs but it is the most interesting piece of JS knowledge I found to that date.
 
 These notes won't replace watching the course, they more of a personal reminder, for em and whoever watch the course.
 
 ## Things to know
 
- - javascript is syncronous and single-threaded.
+ - javascript is synchronous and single-threaded.
  - objects and functions are closely related.
  - javascript doesn't care if arguments are not passed to function, they will just be setted to `undefined`
  - everything is an object or a primitive
@@ -15,12 +15,12 @@ These notes won't replace watching the course, they more of a personal reminder,
 ### Execution context
 
 The execution context is created in 2 phases: 
- - **creation phase**: Global object (variable environment), `this` and **outter environment** is setup in memory. Also setup the memory space for variables and functions (that step is called **hoisting**). An `argument` variable is also created for functions.
+ - **creation phase**: Global object (variable environment), `this` and **outer environment** is setup in memory. Also setup the memory space for variables and functions (that step is called **hoisting**). An `argument` variable is also created for functions.
  - **execution phase**: We here have everything setup and it will run the code line by line.
 
 
 ### The scope chain
-When a variable is called, javascript will does more than check the current **execution context**. An **execution context** have a refence to its outer environment. So in a **execution stack**,  the **outter environment** is not necesserely the **execution context** below itself.  It will instead depends on the **lexical environment**. So if my function is at the global level, the **outter environment** will be `global`. 
+When a variable is called, javascript will does more than check the current **execution context**. An **execution context** have a reference to its outer environment. So in a **execution stack**,  the **outer environment** is not necessarily the **execution context** below itself.  It will instead depends on the **lexical environment**. So if my function is at the global level, the **outer environment** will be `global`. 
 
 ``` javascript
 function a(){
@@ -33,7 +33,7 @@ function b(){
 var example = 2
 b()
 
-// => will return "2" because outter environment of a() is global even thought it's called in b() 
+// => will return "2" because outer environment of a() is global even thought it's called in b() 
 
 function b(){
   function a(){
@@ -44,17 +44,17 @@ function b(){
 }
 var example = 2
 b()
-// => will return '1' because outter environment of a() is b() as a() sits in b() 
+// => will return '1' because outer environment of a() is b() as a() sits in b() 
 ```
 
-The fact of going down throught these **outter environment** is called the **scope chain**.
+The fact of going down through these **outer environment** is called the **scope chain**.
 
 ### Functions are objects
 A function is a special type of object. You can assign it a primitive, an object or a function as property. 
 In a function there is also two important property: _name_ and _code_. A function without a name is called an anonymous function. 
 
 ### By value vs By reference
-When passing a primtive to a variable, javascript will create a copy of that **value**, stored in its own memory.
+When passing a primitive to a variable, javascript will create a copy of that **value**, stored in its own memory.
 ``` javascript
 a = 3
 b = a
@@ -141,7 +141,7 @@ console.log(arr2)
 ### `undefined`
 `undefined` is an internal value of javascript. It will be returned when a variable is initialized(via `var` or something). Different from `not defined` error that happen when the variable isn't in memory at all.
 
-_Never set yourself a value to `undefined` yourself._ That would be valid but it's make the debbugging flawly. 
+_Never set yourself a value to `undefined` yourself._ That would be valid but it's make the debugging flawy. 
 
 ### Coercion
 The fact of changing a value to another type. The coercion is used when the equality operator is called. The coercion can act weird sometimes and that's why we will use triple equal `===` for a most "defined" behavior.
@@ -185,7 +185,7 @@ var test = function(){
 ```
 
 ### Closures
-A feature of javascript. It's a combination of a function and it's lexical environment. The function will "remember" it's outter environment.
+A feature of javascript. It's a combination of a function and it's lexical environment. The function will "remember" it's outer environment.
 
 ``` javascript
 function buildFunction(){
@@ -207,7 +207,7 @@ fs[1]()
 fs[2]()
 // => Return 3 3 3
 // Because for doesn't create it's own execution environment 
-// The outter environment will be the buildFunction and i is 3 in there
+// The outer environment will be the buildFunction and i is 3 in there
 ```
 
 ### `call()`, `apply()` and `bind()`
@@ -278,7 +278,7 @@ All function inherits from the function base object. This object define property
 Same with arrays.
 
 ### The function constructor
-We can build a object with a function contructor using `new` operator:
+We can build a object with a function constructor using `new` operator:
 ``` javascript
 function Post(){
   this.title = "How to construct js objects"
@@ -291,7 +291,7 @@ console.log(post)
 ```
 If the function doesn't specify a `return`, it's acting like we returned `this`.
 A downside is that if we forgot to use the `new` keyword, it will not set the properties at the object level.
-A convetion for helping avoiding this issue is to start functions contructors name with a capital letter.
+A convention for helping avoiding this issue is to start functions constructors name with a capital letter.
 
 ### Pure prototypal inheritance
 
@@ -314,50 +314,50 @@ tom.greet()
 
 ### `class` operator
 In javascript, since ES6, you can use `class` for for creating an object.
-That works like a syntaxic sugar for contructing objects.
+That works like a syntaxic sugar for constructing objects.
 It has an `extends` possibility for using a prototype.
 
 
 ## Glossary 
 
- - **asyncrhronous**: Means more than one at a time. Since javascript is **synchronous**, the **event queue** is used to handle asynchronous stuffs. The asynchronous part will not happen in the javascript engine, it will mostly happens on the render engine of the browser or the http engine.
- - **block**: A portion of code generaly delimited by curly brackets `{}`. 
+ - **asynchronous**: Means more than one at a time. Since javascript is **synchronous**, the **event queue** is used to handle asynchronous stuffs. The asynchronous part will not happen in the javascript engine, it will mostly happens on the render engine of the browser or the HTTP engine.
+ - **block**: A portion of code generally delimited by curly brackets `{}`. 
  - **callback function**: A function you give to another function to be executed when the other function is finished.
  - **coercion**: Converting a value to another type.
  - **dynamic typing**: Type is not defined explicitly, it's figured out when the code is running. It's the opposite of _static typing_.
- - **Event queue**: When an event happens, it's placed on the event queue. When the execution is finished (read the **execution stack** is empty), javascript will check periodacly the event queue and check if something should be run in that case (eg: if an event is listened). If an event happens before the execution is done, javascript will only process this event when the execution is done.
+ - **Event queue**: When an event happens, it's placed on the event queue. When the execution is finished (read the **execution stack** is empty), javascript will check periodically the event queue and check if something should be run in that case (eg: if an event is listened). If an event happens before the execution is done, javascript will only process this event when the execution is done.
  - **execution contexts**: A wrapper to help manage the code that is running. The default execution context is the global execution context. In a browser, the global object is the `window` object. `this` at the global level is the `window` object. _execution context != scope_
  - **execution stack**: A stack of **execution contexts**. When the script on the page is done, the stack is empty.
  - **expression**: A unit of code that results in a value.
  - **first class function**: Anything you can do with other types (assign to var, create them on the fly) can be done with functions. Functions in javascript are first-class functions.
  - **function currying**: Creating a copy of a function but with some preset parameters
  - **function constructor**: A function that is used to construct an object.
- - **hoisting**: Phenomenon that happens during the _creation phase_ of the **execution context**. It's setting up space for variables and functions into the memory. During this proccess, _all variables_ are initialy set to `undefined` and functions are entirely wroten to the memory. So you can call a function that is defined later in the code event thought it's should not be done.
+ - **hoisting**: Phenomenon that happens during the _creation phase_ of the **execution context**. It's setting up space for variables and functions into the memory. During this process, _all variables_ are initially set to `undefined` and functions are entirely wrote to the memory. So you can call a function that is defined later in the code event thought it's should not be done.
  - **inheritance**: One object gets access to the properties and methods of another object. Javascript uses prototypal inheritance.
  - **invocation**: Running a function. Invocation will create a new **execution context** and put it at the top of the **execution stack**. When the invocation is done, the **execution context** is removed form the **execution stack**.
  - **lexical environment**: Where something sits physically in the code you write 
- - **litteral syntax**: A short syntax eg: `[]` for `new Array()`.
+ - **literal syntax**: A short syntax eg: `[]` for `new Array()`.
  - **mutation**: Changing something
  - **name/value pair**: A name which maps to a unique value. A name can only have one value in a given **execution context**.
  - **namespace**: A container for variables and functions.
- - **object**: A collection of **name/value** pair. An object can contains a primitive (called a property), another object (called also a porperty) or a function (called a method).
+ - **object**: A collection of **name/value** pair. An object can contains a primitive (called a property), another object (called also a property) or a function (called a method).
  - **operator**: An operator is a special function in javascript that use a different syntax. Its usually have two parameters and one result. The double equal comparator `==` is an operator. The plus `+` is an operator. The `.` is also an operator !
- - **operator associativity**: What order **operator** functions get called first when the operators have the same **precedence**. Left-to-right asociativity or Right-to-left associtivity. 
+ - **operator associativity**: What order **operator** functions get called first when the operators have the same **precedence**. Left-to-right associativity or Right-to-left associativity. 
  - **operator precedence**: Define which **operator** function is called first. The _higher precedence win_. For example `*` has a higher precedence than `+`. 
- - **outter environment**: A reference to the environment where a function or a variable sits, it's **lexical environment**. By default (read "when declared at the root"), the outter environment is `global`. 
+ - **outer environment**: A reference to the environment where a function or a variable sits, it's **lexical environment**. By default (read "when declared at the root"), the outer environment is `global`. 
  - **primitives types**: The "default" types of javascript. Primitive type mean a single value, _not an object_. The six primitives types are: `undefined`, `null`, `boolean`, `number`, `string` and `symbol`(that is a ES6 type)
  - **reflection**: An object can look at itself, listing and changing its properties and methods.
- - **scope**: Where a variable is available in your code and if it's the truly same varibale.
- - **scope chain**: The fact that a function or variable call not defined in the current **execution context** goes down to the **outter environment** for finding it.
+ - **scope**: Where a variable is available in your code and if it's the truly same variable.
+ - **scope chain**: The fact that a function or variable call not defined in the current **execution context** goes down to the **outer environment** for finding it.
  - **single threaded**: Mean that one command happen at a time.
- - **syncronous**: Mea that the code is happening one line at the time. Similar to **single threaded**.
- - **syntax parsers**: Program that reads the code and determinates what it does and if its syntax is valid. 
- - **variable environement**: Where the variable is. Since every function has it's own **execution context** a varibale with the same name will have _no interactions_ between them. 
- - **whitespace**: Invisilbe character that create space in th code (spaces, tabs, returns).
+ - **synchronous**: Mean that the code is happening one line at the time. Similar to **single threaded**.
+ - **syntax parsers**: Program that reads the code and determinate what it does and if its syntax is valid. 
+ - **variable environment**: Where the variable is. Since every function has it's own **execution context** a variable with the same name will have _no interactions_ between them. 
+ - **whitespace**: Invisible character that create space in the code (spaces, tabs, returns).
 
 
 ## Resources
 
  - [Operator precedence on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
- - [Equality comparaison and sameness on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
- - [Annoted underscore.js source code](https://underscorejs.org/docs/underscore.html)
+ - [Equality comparison and sameness on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+ - [Annotated underscore.js source code](https://underscorejs.org/docs/underscore.html)
