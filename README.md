@@ -45,6 +45,14 @@ function b(){
 var example = 2
 b()
 // => will return '1' because outer environment of a() is b() as a() sits in b() 
+
+document.addEventListener('click, function() { console.log(this) });
+
+// => will return the document object as functions are inheriting the execution scope
+
+document.addEventListener('click, () => console.log(this));
+
+// => will return the window object as arrow functions are inheriting the declaration scope
 ```
 
 The fact of going down through these **outer environment** is called the **scope chain**.
