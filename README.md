@@ -51,7 +51,7 @@ The fact of going down through these **outer environment** is called the **scope
 
 Another point of interest when speaking about scope chain is the difference between normal functions and arrow functions.
 
-```
+``` javascript
 document.addEventListener('click', function() { console.log(this) });
 // => will return the document object as functions are inheriting the execution scope
 
