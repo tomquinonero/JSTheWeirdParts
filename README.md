@@ -1,7 +1,7 @@
 # Notes on "Javascript: Understanding the weird parts"
 
 That document is what I wrote during following that amazing course by Anthony P.Alicea. You can find the [course](http://learnwebdev.net/) and the [first 3.5 hours](https://www.youtube.com/watch?v=Bv_5Zv5c-Ts).
-This course is kinda old and isn't using ES6 stuffs but it is the most interesting piece of JS knowledge I found to that date.
+This course is kinda old and isn't using ES6 stuff but it is the most interesting piece of JS knowledge I found to that date.
 
 These notes won't replace watching the course, they more of a personal reminder, for me and whoever watch the course.
 
@@ -330,7 +330,7 @@ It has an `extends` possibility for using a prototype.
 
 ## Glossary 
 
- - **asynchronous**: Means more than one at a time. Since javascript is **synchronous**, the **event queue** is used to handle asynchronous stuffs. The asynchronous part will not happen in the javascript engine, it will mostly happens on the render engine of the browser or the HTTP engine.
+ - **asynchronous**: Means more than one at a time. Since javascript is **synchronous**, the **event queue** is used to handle asynchronous stuff. The asynchronous part will not happen in the javascript engine, it will mostly happens on the render engine of the browser or the HTTP engine.
  - **block**: A portion of code generally delimited by curly brackets `{}`. 
  - **callback function**: A function you give to another function to be executed when the other function is finished.
  - **coercion**: Converting a value to another type.
