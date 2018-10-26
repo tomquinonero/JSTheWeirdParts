@@ -49,6 +49,16 @@ b()
 
 The fact of going down through these **outer environment** is called the **scope chain**.
 
+Another point of interest when speaking about scope chain is the difference between normal functions and arrow functions.
+
+``` javascript
+document.addEventListener('click', function() { console.log(this) });
+// => will return the document object as functions are inheriting the execution scope
+
+document.addEventListener('click', () => console.log(this));
+// => will return the window object as arrow functions are inheriting the declaration scope
+```
+
 ### Functions are objects
 A function is a special type of object. You can assign it a primitive, an object or a function as property. 
 In a function there is also two important property: _name_ and _code_. A function without a name is called an anonymous function. 
