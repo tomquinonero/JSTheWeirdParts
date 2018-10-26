@@ -3,7 +3,7 @@
 That document is what I wrote during following that amazing course by Anthony P.Alicea. You can find the [course](http://learnwebdev.net/) and the [first 3.5 hours](https://www.youtube.com/watch?v=Bv_5Zv5c-Ts).
 This course is kinda old and isn't using ES6 stuffs but it is the most interesting piece of JS knowledge I found to that date.
 
-These notes won't replace watching the course, they more of a personal reminder, for em and whoever watch the course.
+These notes won't replace watching the course, they more of a personal reminder, for me and whoever watch the course.
 
 ## Things to know
 
