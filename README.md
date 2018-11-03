@@ -222,7 +222,7 @@ fs[2]()
 
 ### `call()`, `apply()` and `bind()`
 All functions have access to a `call()`, `apply()` and `bind()` function.
-When creating an expression function, I can change what `this` is refering to using bind:
+When creating an expression function, I can change what `this` is referring to using bind:
 ``` javascript
 var person = {
   firstname: "Tom"
